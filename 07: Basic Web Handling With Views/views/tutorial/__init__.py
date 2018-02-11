@@ -1,10 +1,4 @@
 from pyramid.config import Configurator
-from pyramid.response import Response
-
-
-def hello_world(request):
-    print('Incomming request')
-    return Response('<body><h1>Hello World!</h1><body>')
 
 
 def main(global_config, **settings):
