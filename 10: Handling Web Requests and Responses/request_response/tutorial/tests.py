@@ -41,11 +41,3 @@ class TutorialFunctionalTests(unittest.TestCase):
         app = main({})
         from webtest import TestApp
         self.testapp = TestApp(app)
-
-    def test_home(self):
-        res = self.testapp.get('/', status=200)
-        self.assertIn(b'<h1>Hi Home View', res.body)
-
-    def test_hello(self):
-        res = self.testapp.get('/howdy', status=200)
-        self.assertIn(b'<h1>Hi Hello View', res.body)
