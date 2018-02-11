@@ -13,4 +13,10 @@ class TutorialViews:
 
     @view_config(route_name='home')
     def home(self):
-        return HTTPFound(location='/plain')
+        first = self.request.matchdict['first']
+        last = self.request.matchdict['last']
+        return {
+            'name': 'Home View',
+            'first': first,
+            'last': last
+        }
