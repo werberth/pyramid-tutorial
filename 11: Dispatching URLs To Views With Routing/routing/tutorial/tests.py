@@ -14,9 +14,12 @@ class TutorialViewTests(unittest.TestCase):
         from .views import TutorialViews
 
         request = testing.DummyRequest()
+        request.matchdict['first'] = 'First'
+        request.matchdict['last'] = 'Last'
         inst = TutorialViews(request)
         response = inst.home()
-        self.assertEqual(response.status, '302 Found')
+        self.assertEqual(response['first'], 'First')
+        self.assertEqual(response['last'], 'Last')
 
 
 class TutorialFunctionalTests(unittest.TestCase):
@@ -27,3 +30,8 @@ class TutorialFunctionalTests(unittest.TestCase):
         from webtest import TestApp
 
         self.testapp = TestApp(app)
+    
+    def test_home(self):
+        res = self.testapp.get('/howdy/Jane/Doe', status=200)
+        self.assertIn(b'Jane', res.body)
+        self.assertIn(b'Doe', res.body)
