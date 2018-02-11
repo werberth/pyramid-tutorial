@@ -16,15 +16,7 @@ class TutorialViewTests(unittest.TestCase):
         request = testing.DummyRequest()
         inst = TutorialViews(request)
         response = inst.home()
-        self.assertIn('Home View', response['name'])
-
-    def test_hello(self):
-        from .views import TutorialViews
-
-        request = testing.DummyRequest()
-        inst = TutorialViews(request)
-        response = inst.hello()
-        self.assertIn('Hello View', response['name'])
+        self.Equal(response.status, '302 Found')
 
 
 class TutorialFunctionalTests(unittest.TestCase):
