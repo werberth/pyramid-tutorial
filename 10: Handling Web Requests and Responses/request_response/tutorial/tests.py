@@ -26,6 +26,15 @@ class TutorialViewTests(unittest.TestCase):
         response = inst.plain()
         self.assertEqual(b'No Name Provided', response.body)
 
+    def test_plain_with_name(self):
+        from .views import TutorialViews
+
+        request = testing.DummyRequest()
+        request.GET['name'] = 'Jane Doe'
+        inst = TutorialViews(request)
+        response = inst.plain()
+        self.assertIn(b'Jane Doe', response.body)
+
 class TutorialFunctionalTests(unittest.TestCase):
     def setUp(self):
         from tutorial import main
