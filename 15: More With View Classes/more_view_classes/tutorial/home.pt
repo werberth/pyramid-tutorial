@@ -6,7 +6,7 @@
     <body>
         <h1>${view.view_name} - ${page_title}</h1>
 
-        <p>Go to the <a href="$(request.route_url('hello', first='jane',
+        <p>Go to the <a href="${request.route_url('hello', first='jane',
                 last='doe')}">form</a>.</p>
     </body>
 </html>
