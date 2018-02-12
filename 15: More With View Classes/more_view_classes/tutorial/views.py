@@ -1,14 +1,26 @@
-from pyramid.response import Response
-from pyramid.view import view_config
+from pyramid.view import (
+    view_config,
+    view_defaults
+)
 
 
-# First view, available at http://localhost:6543/
-@view_config(route_name='home', renderer='home.pt')
-def home(request):
-    return {'name': 'Home View'}
+@view_defaults(route_name='hello')
+class TutorialViews(object):
+    def __init__(self, request):
+        self.request = request
+        self.view_name = 'TutorialViews'
 
+    @property
+    def full_name(self):
+        first = self.request.matchdict['first']
+        last = self.request.matchdict['last']
+        return first + ' ' + last
 
-# /howdy
-@view_config(route_name='hello', renderer='home.pt')
-def hello(request):
-    return {'name': 'Hello View'}
+    @view_config(route_name='home', renderer='home.pt')
+    def home(self):
+        return {'page_title': 'Home View'}
+
+    # Retrieving /howdy/fist/last the first time
+    @view_config(renderer='hello.pt')
+    def hello(self):
+        return {'page_title': 'Hello View'}
