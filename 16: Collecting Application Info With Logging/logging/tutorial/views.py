@@ -15,8 +15,10 @@ class TutorialViews:
 
     @view_config(route_name='home')
     def home(self):
+        log.debug('In home view')
         return {'name': 'Home View'}
 
     @view_config(route_name='hello')
     def hello(self):
+        log.debug('In hello view')
         return {'name': 'Hello View'}
