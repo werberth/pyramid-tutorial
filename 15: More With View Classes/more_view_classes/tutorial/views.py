@@ -24,3 +24,16 @@ class TutorialViews(object):
     @view_config(renderer='hello.pt')
     def hello(self):
         return {'page_title': 'Hello View'}
+
+    @view_config(request_method='POST', renderer='edit.pt')
+    def edit(self):
+        new_name = self.request.params['new_name']
+        return {'page_title': 'Edit View', 'new_name': new_name}
+
+    @view_config(
+            request_method='POST', request_param='form.delete',
+            renderer='delete.pt'
+        )
+    def delete(self):
+            print('Deleted')
+            return {'page_title': 'Delete View'}
