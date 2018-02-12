@@ -28,4 +28,4 @@ class TutorialFunctionalTests(unittest.TestCase):
 
     def test_home(self):
         res = self.testapp.get('/', status=200)
-        self.assertIn(b'<h1>Hi Home View', res.body)
+        self.assertIn(b'TutorialViews', res.body)
