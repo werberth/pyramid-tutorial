@@ -9,6 +9,15 @@ class TutorialViews:
     def __init__(self, request):
         self.request = request
 
+    @property
+    def counter(self):
+        session = self.request.session
+        if 'counter' in session:
+            session['counter'] += 1
+        else:
+            session['counter'] = 1
+        return session['counter']
+
     @view_config(route_name='home')
     def home(self):
         return {'name': 'Home View'}
