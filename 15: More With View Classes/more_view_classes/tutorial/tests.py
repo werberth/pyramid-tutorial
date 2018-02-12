@@ -16,7 +16,7 @@ class TutorialViewTests(unittest.TestCase):
         request = testing.DummyRequest()
         inst = TutorialViews(request)
         response = inst.home()
-        self.assertIn('Home View', response['name'])
+        self.assertIn('Home View', response['page_title'])
 
 
 class TutorialFunctionalTests(unittest.TestCase):
