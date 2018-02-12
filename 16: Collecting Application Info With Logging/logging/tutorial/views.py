@@ -1,7 +1,11 @@
+import logging
+
 from pyramid.view import (
     view_config,
     view_defaults
 )
+
+log = logging.getLogger(__name__)
 
 
 @view_defaults(renderer='home.pt')
