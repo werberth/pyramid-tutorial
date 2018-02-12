@@ -18,13 +18,6 @@ class TutorialViewTests(unittest.TestCase):
         response = inst.home()
         self.assertIn('Home View', response['name'])
 
-    def test_hello(self):
-        from .views import hello
-
-        request = testing.DummyRequest()
-        response = hello(request)
-        self.assertIn('Hello View', response['name'])
-
 
 class TutorialFunctionalTests(unittest.TestCase):
     def setUp(self):
